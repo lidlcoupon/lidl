@@ -1,0 +1,42 @@
+window.onload = function(){
+
+    var utm = window.location.search.replace( '?', ''); 
+	var link = "http://geschenkpromo.online/click.php?key=6n29ndrkkqel0czjbzp5&";
+	var final = link + utm;
+    let a_href = final;
+    let step = 0;
+
+    showQuestion();
+    document.onclick = function(event) {
+        event.stopPropagation();
+        if(event.target.classList.contains('btn') && step != 6){
+            step++;
+            showQuestion(step);
+        }
+    }
+
+
+    function showQuestion(questionNumber){
+        let question = '';
+        for (let key in quiz[step]['q']){
+            question += `<div class="question__item">${quiz[step]['q'][key]}</div>`;
+        }
+        document.querySelector(".question").innerHTML = question;
+        let answer = '';
+        if(step == 0){
+            answer += `<div class="btn answers__first">${quiz[step]['a'][1]}</div>`;
+        }
+        if(step == 6){
+        for (let key in quiz[step]['a']){
+                answer += `<a href="${a_href}"><div class=" btn answers__last">${quiz[step]['a'][key]}</div></a>`;
+            }
+        }
+        if(step > 0 && step < 6){
+            for (let key in quiz[step]['a']){
+                answer += `<div class=" btn answers__item">${quiz[step]['a'][key]}</div>`;
+            }
+        }
+        document.querySelector(".answers").innerHTML = answer;
+    }
+}
+
