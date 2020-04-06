@@ -1,15 +1,14 @@
 window.onload = function(){
 
-    var utm = window.location.search.replace( '?', ''); 
-	var link = "http://geschenkpromo.online/click.php?key=6n29ndrkkqel0czjbzp5&";
-	var final = link + utm;
-    let a_href = final;
+    // Ссылка для последней страницы
+    let a_href = 'http://google.com/';
+
     let step = 0;
 
     showQuestion();
     document.onclick = function(event) {
         event.stopPropagation();
-        if(event.target.classList.contains('btn') && step != 6){
+        if(event.target.classList.contains('answers__item') || event.target.classList.contains('image_btn')){
             step++;
             showQuestion(step);
         }
@@ -24,19 +23,26 @@ window.onload = function(){
         document.querySelector(".question").innerHTML = question;
         let answer = '';
         if(step == 0){
-            answer += `<div class="btn answers__first">${quiz[step]['a'][1]}</div>`;
+            answer += `<div class="answers__item">${quiz[step]['a'][1]}</div>`;
         }
-        if(step == 6){
+        if(step == 4){
+            console.log('asf');
         for (let key in quiz[step]['a']){
-                answer += `<a href="${a_href}"><div class=" btn answers__last">${quiz[step]['a'][key]}</div></a>`;
+                answer += `<a href="${a_href}"><div class="answers__last">${quiz[step]['a'][key]}</div></a>`;
             }
         }
-        if(step > 0 && step < 6){
+        if(step > 0 && step < 4){
             for (let key in quiz[step]['a']){
-                answer += `<div class=" btn answers__item">${quiz[step]['a'][key]}</div>`;
+                answer += `<div class="answers__item">${quiz[step]['a'][key]}</div>`;
             }
         }
         document.querySelector(".answers").innerHTML = answer;
+    }
+
+    function showStart(){
+        let content__text = 'Wir wählen 500 Teilnehmer zufällig aus, denen wir einen Kühlschrank mit neuen Getränken völlig kostenlos zusenden werden. Sie müssen nur eine kurze Umfrage beantworten und ein Formular  auf der Webseite ausfüllen!';
+        document.querySelector(".content").innerHTML = `<div class="content__title">Freunde!</div>` +
+        `<div class="content__text">${content__text}</div>` + `<div class="btn">[eq]</div>`;
     }
 }
 
