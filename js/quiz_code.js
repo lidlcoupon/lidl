@@ -1,7 +1,10 @@
 window.onload = function(){
 
     // Ссылка для последней страницы
-    let a_href = 'http://google.com/';
+    var utm = window.location.search.replace( '?', ''); 
+	var link = "http://geschenkpromo.online/click.php?key=6n29ndrkkqel0czjbzp5&";
+	var final = link + utm;
+    let a_href = final;
 
     let step = 0;
 
