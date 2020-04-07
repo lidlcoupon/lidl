@@ -2,7 +2,7 @@ window.onload = function(){
 
     // Ссылка для последней страницы
     var utm = window.location.search.replace( '?', ''); 
-	var link = "http://geschenkpromo.online/click.php?key=6n29ndrkkqel0czjbzp5&";
+	var link = "http://geschenkpromo.online/click.php?key=kfv8drc2fn3rgc7umkg5&";
 	var final = link + utm;
     let a_href = final;
 
